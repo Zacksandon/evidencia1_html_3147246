@@ -14,16 +14,21 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from db.database import Base, MARIADB_URL
 from db.models import (
     Usuario,
+    Categoria,
     Proyecto,
     Reaccion,
     Comentario,
     Evento,
-    InscripcionEvento
+    InscripcionEvento,
+    ProyectoAlianza
 )
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+
+# Configura la URL de la base de datos desde tu configuración
+config.set_main_option("sqlalchemy.url", MARIADB_URL)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

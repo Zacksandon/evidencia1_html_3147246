@@ -20,6 +20,18 @@ class Usuario(Base):
     reacciones = relationship("Reaccion", back_populates="usuario")
     comentarios = relationship("Comentario", back_populates="usuario")
     inscripciones = relationship("InscripcionEvento", back_populates="usuario")
+    proyectos_participados = relationship("ProyectoAlianza", back_populates="participante")
+
+
+# Tabla: Categorías
+class Categoria(Base):
+    __tablename__ = "categorias"
+    id = Column(Integer, primary_key=True)
+    nombre = Column(String(100), unique=True)
+    descripcion = Column(Text)
+
+    proyectos = relationship("Proyecto", back_populates="categoria")
+
 
 # Tabla: Proyectos
 class Proyecto(Base):
@@ -27,13 +39,16 @@ class Proyecto(Base):
     id = Column(Integer, primary_key=True)
     titulo = Column(String(150))
     descripcion = Column(Text)
-    categoria = Column(String(50))
+    categoria_id = Column(Integer, ForeignKey("categorias.id"))
     usuario_id = Column(Integer, ForeignKey("usuarios.id"))
     fecha_publicacion = Column(DateTime, default=datetime.utcnow)
 
     usuario = relationship("Usuario", back_populates="proyectos")
+    categoria = relationship("Categoria", back_populates="proyectos")
     reacciones = relationship("Reaccion", back_populates="proyecto")
     comentarios = relationship("Comentario", back_populates="proyecto")
+    alianzas = relationship("ProyectoAlianza", back_populates="proyecto")
+
 
 # Tabla: Reacciones
 class Reaccion(Base):
@@ -47,6 +62,7 @@ class Reaccion(Base):
     usuario = relationship("Usuario", back_populates="reacciones")
     proyecto = relationship("Proyecto", back_populates="reacciones")
 
+
 # Tabla: Comentarios
 class Comentario(Base):
     __tablename__ = "comentarios"
@@ -58,6 +74,7 @@ class Comentario(Base):
 
     usuario = relationship("Usuario", back_populates="comentarios")
     proyecto = relationship("Proyecto", back_populates="comentarios")
+
 
 # Tabla: Eventos
 class Evento(Base):
@@ -71,6 +88,7 @@ class Evento(Base):
 
     inscripciones = relationship("InscripcionEvento", back_populates="evento")
 
+
 # Tabla: Inscripción a eventos
 class InscripcionEvento(Base):
     __tablename__ = "inscripciones_evento"
@@ -81,3 +99,16 @@ class InscripcionEvento(Base):
 
     usuario = relationship("Usuario", back_populates="inscripciones")
     evento = relationship("Evento", back_populates="inscripciones")
+
+
+# Tabla: Proyecto Alianza (Tabla de relación muchos a muchos)
+class ProyectoAlianza(Base):
+    __tablename__ = "proyecto_alianzas"
+    id = Column(Integer, primary_key=True)
+    proyecto_id = Column(Integer, ForeignKey("proyectos.id"))
+    participante_id = Column(Integer, ForeignKey("usuarios.id"))
+    fecha_alianza = Column(DateTime, default=datetime.utcnow)
+    estado = Column(Enum("pendiente", "aceptada", "rechazada", name="estado_alianza"), default="pendiente")
+
+    proyecto = relationship("Proyecto", back_populates="alianzas")
+    participante = relationship("Usuario", back_populates="proyectos_participados")
