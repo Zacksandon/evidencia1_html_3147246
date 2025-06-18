@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+    padding: 50px;
+}
+.calendar-container{
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #ccc;
+    background-color: aliceblue;
+    }
+.time-bar{
+    border-right:1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    padding-top: 40px;
+}
+.time-slot{
+    display: flex;
+    flex-grow: 1;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top:50px;
+    border-bottom: 1px dashed #ccc;
+    font-size: 12px;
+    color: #666;
+}
+.week{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+}
+.day-column{
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    flex-wrap: nowrap;
+    flex-direction: row;
+} 
+.day-header{
+    color: black;
+    height: 40px;
+    border-right: #666 solid 1px;
+    border-bottom: #666 solid 1px;
+    background-color: #f0f0f0;
+}
+.day-content{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    border-right: #666 solid 1px;
+    border-bottom: #666 solid 1px;
+    background-color: white;
+    flex-grow: 1;
+    flex-wrap: nowrap;  
+    position: relative;
+    text-align: center;
+}
+.actividad1{
+    position: absolute;
+    background-color: #00e1ff;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    height: 190px;
+    border-radius: 4px;
+    width: 95%;
+    text-align: center;
+}
+.actividad2{
+    position: absolute;
+    background-color: #00e1ff;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    height: 190px;
+    border-radius: 4px;
+    width: 95%;
+    text-align: center;
+    top: 200px;
+}
+.actividad3{
+    position: absolute;
+    background-color: #4c00fc;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    height: 390px;
+    border-radius: 4px;
+    width: 95%;
+    text-align: center;
+    top: 400px;
+}
+.actividad4{
+    position: absolute;
+    background-color: #b9fc00;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    height: 190px;
+    border-radius: 4px;
+    width: 95%;
+    text-align: center;
+    top: 400px;
+}
+.actividad5{
+    position: absolute;
+    background-color: #b9fc00;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    height: 190px;
+    border-radius: 4px;
+    width: 95%;
+    text-align: center;
+    top: 600px;
+}
+.actividad6{
+    position: absolute;
+    background-color: #fcac00;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    height: 190px;
+    border-radius: 4px;
+    width: 95%;
+    text-align: center;
+    top: 600px;
+}
+.actividad7{
+    position: absolute;
+    background-color: #fcac00;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    height: 390px;
+    border-radius: 4px;
+    width: 95%;
+    text-align: center;
+    top: 0px;
+}
+.actividad8{
+    position: absolute;
+    background-color: #e3fc00;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    height: 390px;
+    border-radius: 4px;
+    width: 95%;
+    text-align: center;
+    top: 400px;
+}

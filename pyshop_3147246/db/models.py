@@ -15,3 +15,14 @@ class Productos(Base):
     id=Column(Integer, 
               primary_key=True)
     Categoria_id = Column(Integer, ForeignKey("categorias.id"))
+
+    class Clientes(Base):
+        __tablename__ = "clientes"
+        id = Column(Integer, primary_key=True)
+        
+        nombre = Column(String(50))
+        apellido = Column(String(50))
+        email = Column(String(100))
+        password = Column(String(100))
+
+    

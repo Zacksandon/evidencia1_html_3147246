@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"name": "venv",
+			"path": "../../venv"
+		},
+		{
+			"name": "alembic",
+			"path": "../../alembic"
+		},
+		{
+			"name": "pyshop_3147246",
+			"path": "../../pyshop_3147246"
+		},
+		{
+			"name": "db",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}

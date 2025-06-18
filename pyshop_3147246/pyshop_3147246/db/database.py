@@ -1,11 +1,23 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
-# Variable cadena de conexion
-MARIADB_URL='mysql+pymysql://root:admin@localhost:3315/py_shop'
+# URL básica
+MARIADB_URL = "mysql+pymysql://root:@localhost:3315/py_shop"
 
-#Crear el objeto conexion de la base de datos
-engine = create_engine(MARIADB_URL)
+# Crear el motor con parámetros específicos
+engine = create_engine(
+    MARIADB_URL, 
+    echo=True,
+    connect_args={
+        "auth_plugin_map": {
+            "mysql_native_password": "mysql_native_password"
+        }
+    }
+)
 
-#plantilla base para los modelos 
+# Crear una sesión local
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# Base para los modelos
 Base = declarative_base()
